@@ -1,3 +1,5 @@
+// instantiating classes (object is an instance of class)
+
 class Vehicle {
     constructor (type, cylinders, fuelType){
         this._type = type
