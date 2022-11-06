@@ -101,19 +101,41 @@ class Recipe {
     }
 }
 
-let americano = {
-    waterQty: 6,
-    waterTemp: 200,
-    beansType: "espresso",
-    beansQty: 1.5,
-    grind: "fine",
-    cream: 0,
-    sweetener: 0,
-    milk: 0,
-    ice: 0,
-    description: "coffee drink prepared by diluting an espresso with hot water"
+function makeRecipe(event){
+    event.preventDefault()
+    let recipeForm = document.forms[0]
+    let data = new FormData(recipeForm)
+
+    let recipeCard = {
+        name: data.get('name'),
+        waterQty: data.get('water-qty'),
+        waterTemp: data.get('water-temp'),
+        beansType: data.get('bean-type'),
+        beansQty: data.get('beans-qty'),
+        grind: data.get('grind-type'),
+        description: data.get('description')
+    }
+
+    let newRecipe = new Recipe(recipeCard)
+
+    
+    console.log(newRecipe)
+     
 }
 
 
+// this._name = recipeCard.name
+// this._waterQty = recipeCard.waterQty
+// this._waterTemp = recipeCard.waterTemp
+// this._beansType = recipeCard.beansType
+// this._beansQty = recipeCard.beansQty
+// this._grind = recipeCard.grind
+// this._cream = recipeCard.cream
+// this._sweetener = recipeCard.sweetener
+// this._milk = recipeCard.milk
+// this._ice = recipeCard.ice
+// this._description = recipeCard.description
+
+document.getElementById('submit').addEventListener("click", makeRecipe)
 
 

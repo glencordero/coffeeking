@@ -4,32 +4,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
+    <form name="recipe" id="recipe">
     <label for="name">Coffee Name</label>
-    <input type="text" id="name"/><br>
-    <label for="name">Water Quantity</label>
-    <input type="text" id="water-qty"/><br>
-    <label for="name">Water Temperature</label>
-    <input type="text" id="water-temp"/><br>
+    <input type="text" id="name" name="name"/><br>
+    <label for="water-qty">Water Quantity</label>
+    <input type="text" id="water-qty" name="water-qty"/><br>
+    <label for="water-temp">Water Temperature</label>
+    <input type="text" id="water-temp" name="water-temp"/><br>
     <label for="bean-type">Select Bean Type:</label>
-    <select name="bean-type" id="bean-type">
+    <select name="bean-type" id="bean-type" name="bean-type">
         <option value="peruvian">Peruvian</option>
         <option value="colombian">Colombian</option>
         <option value="kona">Kona</option>
         <option value="mexican">Mexican</option>
     </select><br>
-    <label for="name">Bean Quantity</label>
-    <input type="text" id="beans-qty"/><br>
+    <label for="beans-qty">Bean Quantity</label>
+    <input type="text" id="beans-qty" name="beans-qty"/><br>
     <label for="grind-type">Select Grind Type:</label>
-    <select name="grind-type" id="grind-type">
+    <select name="grind-type" id="grind-type" name="grind-type">
         <option value="extra-fine">Extra-fine</option>
         <option value="fine">Fine</option>
         <option value="medium">Medium</option>
         <option value="coarse">Coarse</option>
     </select><br>
-    <label for="name">Coffee Description</label>
-    <input type="text" id="description"/>
+    <label for="description">Coffee Description</label>
+    <input type="text" id="description" name="description"/><br>
+    <button id="submit">Submit</button>
+    </form>
     <script src="./recipe-maker.js"></script>     
 </body>
 </html>
