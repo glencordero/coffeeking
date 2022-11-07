@@ -1,3 +1,5 @@
+let recipes = []
+
 class Recipe {
     constructor(recipeCard){
         this._name = recipeCard.name
@@ -119,22 +121,9 @@ function makeRecipe(event){
     let newRecipe = new Recipe(recipeCard)
 
     
-    console.log(newRecipe)
-     
+    recipes.push(newRecipe)
+    localStorage.setItem('recipes', JSON.stringify(recipes))
 }
-
-
-// this._name = recipeCard.name
-// this._waterQty = recipeCard.waterQty
-// this._waterTemp = recipeCard.waterTemp
-// this._beansType = recipeCard.beansType
-// this._beansQty = recipeCard.beansQty
-// this._grind = recipeCard.grind
-// this._cream = recipeCard.cream
-// this._sweetener = recipeCard.sweetener
-// this._milk = recipeCard.milk
-// this._ice = recipeCard.ice
-// this._description = recipeCard.description
 
 document.getElementById('submit').addEventListener("click", makeRecipe)
 
