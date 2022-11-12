@@ -19,10 +19,10 @@ menuRecipes.forEach(recipe=>{
     let p = document.createElement('p')
     p.innerHTML = `${recipe._name} : ${recipe._description}`
     wrapperDiv.appendChild(p)
-    wrapperDiv.appendChild(createSlider("Cream"))
-    wrapperDiv.appendChild(createSlider("Sweetener"))
-    wrapperDiv.appendChild(createSlider("Milk"))
-    wrapperDiv.appendChild(createSlider("Ice"))
+    wrapperDiv.appendChild(createSlider(recipe._name,"Cream"))
+    wrapperDiv.appendChild(createSlider(recipe._name,"Sweetener"))
+    wrapperDiv.appendChild(createSlider(recipe._name,"Milk"))
+    wrapperDiv.appendChild(createSlider(recipe._name,"Ice"))
     let recipeDisplay = document.getElementById('recipe-display')
     
     addEventListener("click", selectMenuItem)
@@ -33,14 +33,16 @@ menuRecipes.forEach(recipe=>{
 function selectMenuItem(event){
     highlightMenuItem(event.target)
     selectedMenuItemId = event.target.id
+    console.log(event.target)
     // document.location.href = "index.html?name=americano&cream=5&milk=0&ice=0&sweetener=2"
 }
 
 let selectedMenuItemId = null
 
-function createSlider(label){
+function createSlider(name, label){
     let sliderDiv = document.createElement('div')
     let slider = document.createElement('input')
+    slider.id = `${name}-${label}`
     slider.type = "range"
     slider.min = 0
     slider.max = 10
@@ -62,3 +64,9 @@ function highlightMenuItem(menuItem){
         menuItem.classList.add("selected")
     }
 }
+
+// function takeOrder(event){
+//     let selectedItemName = 
+// }
+
+let submitButton = document.querySelector('#select').addEventListener("click",takeOrder)
