@@ -1,29 +1,31 @@
-let americano = {
-    waterQty: 6,
-    waterTemp: 200,
-    beansType: "espresso",
-    beansQty: 1.5,
-    grind: "fine",
-    cream: 0,
-    sweetener: 0,
-    milk: 0,
-    ice: 0,
-    description: "coffee drink prepared by diluting an espresso with hot water"
-}
+const urlParams = new URLSearchParams(window.location.search)
+const name = urlParams.get('name')
+const cream = urlParams.get('cream')
+const sweetener = urlParams.get('sweetener')
+const ice = urlParams.get('ice')
+const milk = urlParams.get('milk')
+
+let recipes = JSON.parse(localStorage.getItem('recipes'))
+
+let selectedRecipe = recipes.find(recipe => {
+    return recipe._name == name
+})
+
+console.log(selectedRecipe)
 
 let coffeeKing = {
     progress: document.getElementById('progress'),
     brewCoffee: function(recipe){
-        let water = this.getWater(recipe.waterQty)
-        let heatedWater = this.heatWater(water, recipe.waterTemp)
-        let beans = this.selectBeans(recipe.beansType, recipe.beansQty)
-        let groundBeans = this.grindBeans(beans, recipe.grind)
+        let water = this.getWater(recipe._waterQty)
+        let heatedWater = this.heatWater(water, recipe._waterTemp)
+        let beans = this.selectBeans(recipe.beansType, recipe._beansQty)
+        let groundBeans = this.grindBeans(beans, recipe._grind)
         let coffee = this.pour(heatedWater, beans)
-        this.addCream(coffee, recipe.cream)
-        this.addSweetener(coffee, recipe.sweetener)
-        this.addMilk(coffee, recipe.milk)
-        this.addIce(coffee, recipe.ice)
-        this.dispenseCoffee(recipe.description)
+        this.addCream(coffee, cream)
+        this.addSweetener(coffee, sweetener)
+        this.addMilk(coffee, milk)
+        this.addIce(coffee, ice)
+        this.dispenseCoffee(description)
     },
     getWater: function(waterQty){
         let p = document.createElement('p')
@@ -82,4 +84,5 @@ let coffeeKing = {
         this.progress.appendChild(p)
     }
 }
-coffeeKing.brewCoffee(americano)
+
+coffeeKing.brewCoffee(selectedRecipe)

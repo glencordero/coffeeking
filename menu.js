@@ -33,11 +33,12 @@ menuRecipes.forEach(recipe=>{
 function selectMenuItem(event){
     highlightMenuItem(event.target)
     selectedMenuItemId = event.target.id
-    console.log(event.target)
     // document.location.href = "index.html?name=americano&cream=5&milk=0&ice=0&sweetener=2"
 }
 
 let selectedMenuItemId = null
+
+// TODO get option values
 
 function createSlider(name, label){
     let sliderDiv = document.createElement('div')
@@ -65,8 +66,15 @@ function highlightMenuItem(menuItem){
     }
 }
 
-// function takeOrder(event){
-//     let selectedItemName = 
-// }
+function takeOrder(event){
+    event.preventDefault()
+    // find value of sliders on selected menu item
+    let creamAmount = document.querySelector(`#${selectedMenuItemId}-Cream`).value
+    let sweetenerAmount = document.querySelector(`#${selectedMenuItemId}-Sweetener`).value
+    let milkAmount = document.querySelector(`#${selectedMenuItemId}-Milk`).value
+    let iceAmount = document.querySelector(`#${selectedMenuItemId}-Ice`).value
+    document.location.href = `index.html?name=${selectedMenuItemId}&cream=${creamAmount}&milk=${milkAmount}&ice=${iceAmount}&sweetener=${sweetenerAmount}`
+}
+
 
 let submitButton = document.querySelector('#select').addEventListener("click",takeOrder)
